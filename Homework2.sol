@@ -40,5 +40,10 @@ contract Homework2 {
             numArray.pop();
         } 
     }
+    function removeMultiple(uint256[] _indexs) public {
+        for(uint i = 0; i < _indexs.length-1; i++) {
+        removeElement(i);    
+        }
+    }
 
 }
