@@ -45,5 +45,15 @@ contract Homework2 {
         removeElement(i);    
         }
     }
+    function removeWithHistory(uint256 _index) public {
+    //use the history to remove selectively and adjust the index
+        uint256 shift = 0;
+        for(uint i = 0; i < history.length-1; i++) {
+            if(history[i]>_index) {
+            shift++;
+            }
+        }
+        removeOrdered(_index+shift);
+    }
 
 }
