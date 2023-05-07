@@ -1,0 +1,15 @@
+Homework 3 
+
+HomeworkEVM1
+
+1. What are the advantages and disadvantages of the 256 bit word length in the EVM?
+
+Could be a little bit wastefull because when operating most of the numbers are going to be way smaller than 256 bits, but it helps in the Keccak256 hash schemes and elliptic-curve computations, so to help the cryptographics technics used to fit easyally to the stack. 
+
+2. What would happen if the implementation of a precompiled contract varied between Ethereum clients ?
+
+The different clients would not come to consensus and you get end up with forks of the network.
+
+3. Using Remix write a simple contract that uses a memory variable, then using the debugger step through the function and inspect the memory.
+
+
