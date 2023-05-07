@@ -1,0 +1,44 @@
+Homework1. 
+
+Discuss in your teams
+1. Why is client diversity important for Ethereum
+
+There are several production-level Ethereum clients, each one developed and maintained in different languages by separate teams.  
+That software rules the node behaviour, but are all built to a common spec that ensures the clients seamlessly communicate with each other and have the same functionality and provide an equivalemnt user experience. 
+
+Client diversity makes the network more resilient to attacks and bugs.
+**Bugs** - If there is a bug in one of the clients, would represent a minor risk to the network if it's the client running on a minority of nodes. With a roughly even distribution of nodes, less nodes will be using the bug-client, and the shared issue would be small. In that scenario the network is more robust.
+**Resilience to attacks** - attacks that tricks a particular client onto a particular branch of the chain is unlikely to be succesfull if the nodes using that client isn't the majority of nodes on the network. 
+**Proof** - A book in 33% of the nodes because of a client bug could prevent the Beacon Chain from finalizing, incorrectly split and finalize, leaving a lot of validator in an incorrect chain. Ideally, no consensus client would ever reach 33% share of the total nodes.
+**Shared responsibility** - Human cost, too much strain and responsibility on a small development team. 
+     
+
+2. Where is the full Ethereum state held ?
+
+First of all, the Ethereum world state is a mappingbetween addresses and account states, but that isn't stored on the blockchain. 
+This is available within the clients that are holding the state of the blockchain. 
+How the clients/nodes hold the information and keep track of the state is enterely up to them, but they need to fullfil the Ethereum Yellow Paper and follow the Merkle Patricia tree. 
+Also the accounts has the storageRoot, hash of the root node of a Merkle Patricia tree that encodes the storage contents of the account. 
+
+
+3. What is a replay attack ? , which 2 pieces of information can prevent it ? 
+
+A replay attack is a type of cybercrime where bad actors get hold of an original encrypted message during data transmission and use it to fool the system into carrying out the same transaction multiple times.
+
+ECDSA signatures consist of two numbers (integers): r and s .
+Ethereum also uses an additional v (recovery identifier) variable. The signature can be notated as {r, s, v} .
+To create a signature you need the message to sign and the private key ( da ) to sign it with. 
+
+
+4. In a contract, how do we know who called a view function ?
+
+When a view function is called, it creates a local copy of the contract's state and reads from it. As a result, there is no need to record the caller's information as that data is not being modified on the blockchain.
+In general, Ethereum does not track the identity of the callers of view functions because they do not change the state of the blockchain.
+
+Answers
+1. Decentralisation and resilience
+2. In the client software on an archive node
+3.
+   a) Where a previously accepted transaction is re submitted to the network
+   b) The chain ID and the nonce
+4. Although msg.sender may have the address we cannot rely on this.
